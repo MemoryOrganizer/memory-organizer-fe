@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import request from 'superagent';
+import { get, post, patch, del, photoPost } from '../../services/request';
 
 export default class CreateMemory extends Component {
   state = {
@@ -12,16 +12,18 @@ export default class CreateMemory extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    request.post('/api/v1/memories', {
+    post('/api/v1/memories', this.state)
+      .then((res) => {
 
-    });
-
+        const formData = new FormData();
+        formData.append('photo', this.state.photo);
+        formData.append('memory', res._id);
+        return photoPost('/api/v1/photos', formData);
+      });
 
   }
   handleChange = event => {
-    const name = event.target.name;
-    const value = event.target.value;
-    this.setState({ [name]: value });
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   render() {
