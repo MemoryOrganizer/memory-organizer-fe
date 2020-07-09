@@ -21,15 +21,16 @@ export const HomePage = () => {
   const handleSignUp = (e) => {
     e.preventDefault();
     signup({ username: usernameSignUp, password: passwordSignUp  })
-      .then(user => setUser(user));
-    // .then(() => history.push('/dashboard'));
+      .then(user => setUser(user))
+      .then(() => history.push('/dashboard'));
+
   };
 
   const handleLogin = (e) => {
     e.preventDefault();
     login({ username: usernameLogin, password: passwordLogin })
-      .then(user => setUser(user));
-    // .then(() => history.push('/dashboard'));
+      .then(user => setUser(user))
+      .then(() => history.push('/dashboard'));
   };
 
   return (
