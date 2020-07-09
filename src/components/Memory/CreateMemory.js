@@ -12,8 +12,12 @@ export default class CreateMemory extends Component {
     
 
     post('/api/v1/memories', this.state)
+       
       .then((res) => {
 
+        this.setState({
+          memoryInfo: res
+        });
         const formData = new FormData();
         formData.append('memory', res._id);
         formData.append('photo', this.state.photo);
@@ -23,7 +27,9 @@ export default class CreateMemory extends Component {
       .then((res) => {
         this.props.history.push({
           pathname: '/detailpage',
-          response: res
+          responseMemory: this.state.memoryInfo,
+          responsePhoto: res
+          
         });
       });
 
