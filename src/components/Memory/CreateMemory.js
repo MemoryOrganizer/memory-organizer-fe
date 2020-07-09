@@ -26,8 +26,8 @@ export default class CreateMemory extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          <h3>Title</h3>
-          <input value={this.state.title} name='title' onChange={this.handleChange}/>
+          <h3>Title (required)</h3>
+          <input value={this.state.title} name='title' required  onChange={this.handleChange}/>
         </label>
         <label>
           <h3>Description</h3>
@@ -58,7 +58,7 @@ export default class CreateMemory extends Component {
           <input value={this.state.privateNotes} name='privateNotes' onChange={this.handleChange} ></input>
         </label>
         <label>
-          <h3>Photo (optional)</h3>
+          <h3>Photo</h3>
           <input name='photo' type='file' onChange={({ target }) => this.setState({ photo: target.files[0] })}/>
         </label>
         <button type='submit'>Submit</button>
