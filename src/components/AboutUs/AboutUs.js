@@ -12,10 +12,10 @@ export default class AboutUs extends Component {
           <h3>Langston Beckwith-Stanley</h3>
           <p>Bio coming</p>
           <img />
-          <a href="https://github.com/orgs/MemoryOrganizer/people/langstonBS" >
+          <a href="https://github.com/langstonBS" target="_blank" >
             <img src={Github} alt="" width="35" />
           </a>
-          <a href="https://www.linkedin.com/in/langston-beckwith-stanley-831436161/" >
+          <a href="https://www.linkedin.com/in/langston-beckwith-stanley-831436161/" target="_blank" >
             <img src={LinkedIn} alt="" width="35"/>
           </a>
         </div>
@@ -24,10 +24,10 @@ export default class AboutUs extends Component {
           <h3>Hunter Danielson</h3>
           <p>Bio coming</p>
           <img />
-          <a href="https://github.com/hunterdanielson" >
+          <a href="https://github.com/hunterdanielson" target="_blank">
             <img src={Github} alt="" width="35"/>
           </a>
-          <a href="https://www.linkedin.com/in/hunter-danielson" >
+          <a href="https://www.linkedin.com/in/hunter-danielson" target="_blank">
             <img src={LinkedIn} alt="" width="35" />
           </a>
         </div>
@@ -36,10 +36,10 @@ export default class AboutUs extends Component {
           <h3>Nikki Kiga</h3>
           <p>Bio coming</p>
           <img />
-          <a href="https://github.com/nikki-kiga" >
+          <a href="https://github.com/nikki-kiga" target="_blank">
             <img src={Github} alt="" width="35"/>
           </a>
-          <a href="https://www.linkedin.com/in/nikkikiga/" >
+          <a href="https://www.linkedin.com/in/nikkikiga/" target="_blank">
             <img src={LinkedIn} alt="" width="35" />
           </a>
         </div>
@@ -48,10 +48,10 @@ export default class AboutUs extends Component {
           <h3>Jaime Sanders</h3>
           <p>Bio coming</p>
           <img />
-          <a href="https://github.com/jaimekinsley" >
+          <a href="https://github.com/jaimekinsley" target="_blank">
             <img src={Github} alt="" width="35"/>
           </a>
-          <a href="https://www.linkedin.com/in/jaimelyn/" >
+          <a href="https://www.linkedin.com/in/jaimelyn/" target="_blank">
             <img src={LinkedIn} alt="" width="35" />
           </a>
         </div>
