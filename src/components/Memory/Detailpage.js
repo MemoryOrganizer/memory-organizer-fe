@@ -10,25 +10,38 @@ import { get, patch, del } from '../../services/request';
 
 export default class Detailpage extends Component {
   state = {
-    memory: {},
-    photos: {},
-    id: {}
+    id: {},
+    data: {
+      photos:[]
+    }
+    
   }
 
   componentDidMount() {
-    get(`/memory/${this.props.match.params.id}`)
-      .then(fetchedData => this.setState({ data: fetchedData.body }));
+    console.log(this.props.match.params.id);
+
+    get(`/api/v1/memories/${this.props.match.params.id}`)
+      .then(fetchedData => this.setState({ data: fetchedData }));
+    
   }
   render() {
-
+    console.log(this.state.data);
+    const memoryData = this.state.data;
+    const photoData = this.state.data.photos;
+    
   
     return (
   
       <div>
-        i am on the Detailpage
-
-
-        
+        <h1>{memoryData.title}</h1>
+        <h1>{memoryData.date}</h1>
+        <h1>{memoryData.location}</h1>
+        <h1>{memoryData.rating}</h1>
+        <img src={photoData.url} alt={photoData.tags} />
+        <h1>{photoData.tags}</h1>
+        <h1>{memoryData.tags}</h1>
+        <h1>{memoryData.description}</h1>
+        <h1>{memoryData.privateNotes}</h1>       
       </div>
     );
   }

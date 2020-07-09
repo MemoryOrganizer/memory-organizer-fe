@@ -13,15 +13,20 @@ export default class CreateMemory extends Component {
     post('/api/v1/memories', this.state)
 
       .then((res) => {
-        if(this.state.photo) {
+        if(this.state.photo){
+    
+         
 
           const formData = new FormData();
           formData.append('memory', res._id);
           formData.append('photo', this.state.photo);
-          photoPost('/api/v1/photos', formData);
+          return Promise.all([res._id, photoPost('/api/v1/photos', formData)]);
         }
-        this.props.history.push({ pathname: `/memory/${res._id}` });
-      });
+        return [res._id];
+
+      })
+      .then(([id]) => this.props.history.push({ pathname: `/memory/${id}` }))
+    ;
   };
 
   handleChange = event => {
