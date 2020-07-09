@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import { get, post, patch, del, photoPost } from '../../services/request';
+import { post, photoPost } from '../../services/request';
 
 export default class CreateMemory extends Component {
-  state = {
-    // title: '',
-    // description: '',
-    // date: '',
-    // photo: ''
-  }
+  state = { }
   
 
   handleSubmit = event => {
@@ -40,7 +35,7 @@ export default class CreateMemory extends Component {
         </label>
         <label>
           <h3>Date</h3>
-          <input value={this.state.date} name='date' onChange={this.handleChange}/>
+          <input value={this.state.date} name='date' type='date' onChange={this.handleChange}/>
         </label>
         <label>
           <h3>Location</h3>
@@ -52,7 +47,7 @@ export default class CreateMemory extends Component {
         </label>
         <label>
           <h3>Rating</h3>
-          <input value={this.state.rating} name='rating' onChange={this.handleChange}/>
+          <input value={this.state.rating} name='rating' type='number' min='1' max='5' onChange={this.handleChange}/>
         </label>
         <label>
           <h3>Tags</h3>
