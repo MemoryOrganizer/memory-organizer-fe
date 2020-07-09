@@ -22,6 +22,7 @@ export default function App() {
           <Route exact path="/dashboard" component={Dashboard}/>
           <Route exact path="/memory/:id" component={props => <Detailpage {...props}/>}/>
           <Route exact path="/about" component={AboutUs}/>
+          <Route exact path="/detailpage" component={Detailpage} />
         </MemoryProvider>
       </Switch>
     </Router>

@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import { post, photoPost } from '../../services/request';
+import { useHistory } from 'react-router-dom';
 
 export default class CreateMemory extends Component {
-  state = { }
-  
+  state = {}
+
 
   handleSubmit = event => {
+
     event.preventDefault();
 
     post('/api/v1/memories', this.state)
+
       .then((res) => {
         if(this.state.photo) {
 
@@ -17,10 +20,10 @@ export default class CreateMemory extends Component {
           formData.append('photo', this.state.photo);
           return photoPost('/api/v1/photos', formData);
         }
-        return;
+        this.props.history.push({ pathname: '/detailpage/', memoryid: res._id });
       });
-    // link to the next page
-  }
+  };
+
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   }
