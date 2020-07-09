@@ -5,16 +5,20 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import HomePage from '../Home/HomePage';
+import { HomePage } from '../Home/HomePage';
 import Dashboard from '../Dashboard/Dashboard';
+import CreateMemory from '../Memory/CreateMemory';
+import { MemoryProvider } from '../hooks/Provider';
 
 export default function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/memories" component={Memory}/>
-        <Route exact path="/dashboard" component={Dashboard}/>
-        <Route exact path="/" component={HomePage}/>
+        <MemoryProvider>
+          <Route exact path="/" component={props => <HomePage {...props} />} />
+          <Route exact path="/memories" component={CreateMemory}/>
+          {/* <Route exact path="/dashboard" component={Dashboard}/> */}
+        </MemoryProvider>
       </Switch>
     </Router>
   );
