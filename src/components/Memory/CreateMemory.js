@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { post, photoPost } from '../../services/request';
+import { useHistory } from 'react-router-dom';
 
 export default class CreateMemory extends Component {
-  state = { }
-  
+  state = {}
+
 
   handleSubmit = event => {
+    
     event.preventDefault();
+    
 
     post('/api/v1/memories', this.state)
       .then((res) => {
@@ -15,6 +18,13 @@ export default class CreateMemory extends Component {
         formData.append('memory', res._id);
         formData.append('photo', this.state.photo);
         return photoPost('/api/v1/photos', formData);
+  
+      })
+      .then((res) => {
+        this.props.history.push({
+          pathname: '/detailpage',
+          response: res
+        });
       });
 
   }

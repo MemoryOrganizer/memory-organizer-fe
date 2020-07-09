@@ -6,9 +6,10 @@ import {
 } from 'react-router-dom';
 
 import { HomePage } from '../Home/HomePage';
-import Dashboard from '../Dashboard/Dashboard';
+//import Dashboard from '../Dashboard/Dashboard';
 import CreateMemory from '../Memory/CreateMemory';
 import { MemoryProvider } from '../hooks/Provider';
+import Detailpage from '../Memory/Detailpage';
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
           <Route exact path="/" component={props => <HomePage {...props} />} />
           <Route exact path="/memories" component={CreateMemory}/>
           {/* <Route exact path="/dashboard" component={Dashboard}/> */}
+          <Route exact path="/detailpage" component={Detailpage} />
         </MemoryProvider>
       </Switch>
     </Router>
