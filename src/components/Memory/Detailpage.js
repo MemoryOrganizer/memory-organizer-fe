@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { get, patch, del } from '../../services/request';
 
 //first make fake data to stle
 //get rout
@@ -8,21 +9,24 @@ import React, { Component } from 'react';
 //
 
 export default class Detailpage extends Component {
+  state = {
+    memory: {},
+    photos: {},
+    id: {}
+  }
+
+  componentDidMount() {
+    get(`/memory/${this.props.match.params.id}`)
+      .then(fetchedData => this.setState({ data: fetchedData.body }));
+  }
   render() {
-    const memory = this.props.location.responseMemory;
-    const photo = this.props.location.responsePhoto;
+
+  
     return (
   
       <div>
-        <h2>{memory.title}</h2>
-        <h2>{memory.date}</h2>
-        <h2>{memory.location}</h2>
-        <h2>{memory.rating}</h2>
-        <img src={photo.url} alt={photo.tags} />
-        <h2>{photo.tags}</h2>
-        <h2>{memory.tags}</h2>
-        <h2>{memory.description}</h2>
-        <h2>{memory.privateNotes}</h2>
+        i am on the Detailpage
+
 
         
       </div>

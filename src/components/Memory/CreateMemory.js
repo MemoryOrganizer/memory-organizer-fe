@@ -18,9 +18,9 @@ export default class CreateMemory extends Component {
           const formData = new FormData();
           formData.append('memory', res._id);
           formData.append('photo', this.state.photo);
-          return photoPost('/api/v1/photos', formData);
+          photoPost('/api/v1/photos', formData);
         }
-        this.props.history.push({ pathname: '/detailpage/', memoryid: res._id });
+        this.props.history.push({ pathname: `/memory/${res._id}` });
       });
   };
 
