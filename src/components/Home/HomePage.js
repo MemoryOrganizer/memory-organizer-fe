@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { signup, login } from '../../services/auth';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { useHandleSetUser } from '../hooks/Provider';
 
 export const HomePage = () => {
@@ -78,7 +78,14 @@ export const HomePage = () => {
           <button>Submit</button>
         </form>
       </div>
+
+      <footer>
+        <Link to='/about'><h3>About the developers</h3> </Link>
+      </footer>
+
     </div>
+
+
   );
 };
 
