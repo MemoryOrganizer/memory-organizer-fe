@@ -8,6 +8,7 @@ export default class CreateMemory extends Component {
     // date: '',
     // photo: ''
   }
+  
 
   handleSubmit = event => {
     event.preventDefault();
@@ -16,8 +17,8 @@ export default class CreateMemory extends Component {
       .then((res) => {
 
         const formData = new FormData();
-        formData.append('photo', this.state.photo);
         formData.append('memory', res._id);
+        formData.append('photo', this.state.photo);
         return photoPost('/api/v1/photos', formData);
       });
 
@@ -63,7 +64,7 @@ export default class CreateMemory extends Component {
         </label>
         <label>
           <h3>Photo (optional)</h3>
-          <input value={this.state.photo} name='photo' type='file' onChange={this.handleChange}/>
+          <input name='photo' type='file' onChange={({ target }) => this.setState({ photo: target.files[0] })}/>
         </label>
         <button type='submit'>Submit</button>
       </form>
