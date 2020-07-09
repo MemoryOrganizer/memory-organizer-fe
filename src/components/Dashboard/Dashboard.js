@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { get } from '../../services/request';
 import Memory from './Memory';
 import { Link } from 'react-router-dom';
+import CSS from '../App/App.css';
 
 export default class Dashboard extends Component {
   state = { data: [{ title: '' }] }
-  
+
   componentDidMount() {
     get('/api/v1/memories')
       .then(res => this.setState({ data: res }));
@@ -16,13 +17,13 @@ export default class Dashboard extends Component {
     console.log(this.state.data);
     return (
       <div>
-        <Link to='/memories'>Create a memory</Link>
-        <h2>Dashboard</h2>
+        <h1>Dashboard</h1>
+        <Link to='/memories'><h3>Create a memory</h3></Link>
         <h3>Your memories</h3>
-        {this.state.data 
+        {this.state.data
           ? <ul>{this.state.data.map((memory) => <Memory key={memory._id} memory={memory} />)}</ul>
           : <h4>Create some memories!</h4>
-      
+
         }
 
       </div>

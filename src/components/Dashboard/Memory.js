@@ -7,9 +7,9 @@ export default class Memory extends Component {
     return (
       <li>
         <Link to={`/memory/${this.props.memory._id}`}>
-          <h2>{this.props.memory.title}</h2>
+          <h4>{this.props.memory.title}</h4>
           { this.props.memory.date &&
-          <h3>Date: {this.props.memory.date}</h3>
+          <h4>Date: {this.props.memory.date}</h4>
           }
         </Link>
       </li>

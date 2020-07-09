@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin&family=Open+Sans&display=swap');
+
+
+h1, h2 {
+  font-family: 'Libre Franklin', sans-serif;
+}
+
+h3, h4, p {
+  font-family: 'Open Sans', sans-serif;
+}
+
