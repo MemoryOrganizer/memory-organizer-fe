@@ -1,23 +1,31 @@
 import React, { Component } from 'react';
 import { post, photoPost } from '../../services/request';
+import { useHistory } from 'react-router-dom';
 
 export default class CreateMemory extends Component {
-  state = { }
-  
+  state = {}
+
 
   handleSubmit = event => {
+
     event.preventDefault();
 
     post('/api/v1/memories', this.state)
+
       .then((res) => {
+        if(this.state.photo){
+          const formData = new FormData();
+          formData.append('memory', res._id);
+          formData.append('photo', this.state.photo);
+          return Promise.all([res._id, photoPost('/api/v1/photos', formData)]);
+        }
+        return [res._id];
 
-        const formData = new FormData();
-        formData.append('memory', res._id);
-        formData.append('photo', this.state.photo);
-        return photoPost('/api/v1/photos', formData);
-      });
+      })
+      .then(([id]) => this.props.history.push({ pathname: `/memory/${id}` }))
+    ;
+  };
 
-  }
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   }
@@ -27,7 +35,7 @@ export default class CreateMemory extends Component {
       <form onSubmit={this.handleSubmit}>
         <label>
           <h3>Title (required)</h3>
-          <input value={this.state.title} name='title' required  onChange={this.handleChange}/>
+          <input value={this.state.title} name='title' required onChange={this.handleChange}/>
         </label>
         <label>
           <h3>Description</h3>

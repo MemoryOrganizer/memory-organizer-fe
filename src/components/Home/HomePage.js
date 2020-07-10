@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { signup, login } from '../../services/auth';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { useHandleSetUser } from '../hooks/Provider';
 
 export const HomePage = () => {
@@ -21,15 +21,16 @@ export const HomePage = () => {
   const handleSignUp = (e) => {
     e.preventDefault();
     signup({ username: usernameSignUp, password: passwordSignUp  })
-      .then(user => setUser(user));
-    // .then(() => history.push('/dashboard'));
+      .then(user => setUser(user))
+      .then(() => history.push('/dashboard'));
+
   };
 
   const handleLogin = (e) => {
     e.preventDefault();
     login({ username: usernameLogin, password: passwordLogin })
-      .then(user => setUser(user));
-    // .then(() => history.push('/dashboard'));
+      .then(user => setUser(user))
+      .then(() => history.push('/dashboard'));
   };
 
   return (
@@ -77,7 +78,14 @@ export const HomePage = () => {
           <button>Submit</button>
         </form>
       </div>
+
+      <footer>
+        <Link to='/about'><h3>About the developers</h3> </Link>
+      </footer>
+
     </div>
+
+
   );
 };
 
