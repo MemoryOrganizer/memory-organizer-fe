@@ -19,10 +19,9 @@ export default function App() {
         <MemoryProvider>
           <Route exact path="/" component={props => <HomePage {...props} />} />
           <Route exact path="/memories" component={CreateMemory}/>
-          <Route exact path="/dashboard" component={Dashboard}/>
+          <Route exact path="/dashboard" component={props => <Dashboard {...props}/>}/>
           <Route exact path="/memory/:id" component={props => <Detailpage {...props}/>}/>
           <Route exact path="/about" component={AboutUs}/>
-          <Route exact path="/detailpage" component={Detailpage} />
         </MemoryProvider>
       </Switch>
     </Router>

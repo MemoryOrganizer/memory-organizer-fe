@@ -1,30 +1,38 @@
 import React, { Component } from 'react';
-
-//first make fake data to stle
-//get rout
-// put rout
-//pull in eddit routs 
-//conditinal rendering 
-//
+import { get } from '../../services/request';
+import { Link } from 'react-router-dom';
 
 export default class Detailpage extends Component {
-  render() {
-    const memory = this.props.location.responseMemory;
-    const photo = this.props.location.responsePhoto;
-    return (
-  
-      <div>
-        <h2>{memory.title}</h2>
-        <h2>{memory.date}</h2>
-        <h2>{memory.location}</h2>
-        <h2>{memory.rating}</h2>
-        <img src={photo.url} alt={photo.tags} />
-        <h2>{photo.tags}</h2>
-        <h2>{memory.tags}</h2>
-        <h2>{memory.description}</h2>
-        <h2>{memory.privateNotes}</h2>
+  state = {
+    id: {},
+    data: {
+      photos:[{}]
+    }
+  }
 
-        
+  componentDidMount() {
+    console.log(this.props.match.params.id);
+
+    get(`/api/v1/memories/${this.props.match.params.id}`)
+      .then(fetchedData => this.setState({ data: fetchedData }));
+  }
+  render() {
+    console.log(this.state.data);
+    const memoryData = this.state.data;
+    const photoData = this.state.data.photos[0];
+
+    return (
+      <div>
+        <h1>{memoryData.title}</h1>
+        <h3>{memoryData.date}</h3>
+        <h3>{memoryData.location}</h3>
+        <h5>{memoryData.rating}</h5>
+        <img src={photoData.url} alt={photoData.tags} />
+        <h5>{photoData.tags}</h5>
+        <h5>{memoryData.tags}</h5>
+        <h5>{memoryData.description}</h5>
+        <h5>{memoryData.privateNotes}</h5>
+        <Link to="/dashboard"><button>Return to Dashboard</button></Link>
       </div>
     );
   }
