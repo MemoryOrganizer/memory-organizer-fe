@@ -6,7 +6,7 @@ export default class Detailpage extends Component {
   state = {
     id: {},
     data: {
-      photos:[{}]
+      photos:[]
     }
   }
 

@@ -3,15 +3,14 @@ import { post, photoPost } from '../../services/request';
 import { useHistory } from 'react-router-dom';
 
 export default class CreateMemory extends Component {
+  // dont leave state blank
   state = {}
 
 
   handleSubmit = event => {
-
     event.preventDefault();
 
     post('/api/v1/memories', this.state)
-
       .then((res) => {
         if(this.state.photo){
           const formData = new FormData();
