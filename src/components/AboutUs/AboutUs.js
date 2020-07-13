@@ -3,22 +3,31 @@ import Github from '../../images/github.jpg';
 import LinkedIn from '../../images/linkedin.jpg';
 import { Link } from 'react-router-dom';
 
+// use components to remove code duplicaiton
+const Developer = ({ name, bio, github, linkedin}) => (
+  <div>
+    <h3>{name}</h3>
+    <p>{bio}</p>
+    <img />
+    <a href={github}target="_blank" >
+      <img src={Github} alt="" width="35" />
+    </a>
+    <a href={linkedin} target="_blank" >
+      <img src={LinkedIn} alt="" width="35"/>
+    </a>
+  </div>
+)
+
 
 export default class AboutUs extends Component {
   render() {
     return (
       <>
-        <div>
-          <h3>Langston Beckwith-Stanley</h3>
-          <p>Bio coming</p>
-          <img />
-          <a href="https://github.com/langstonBS" target="_blank" >
-            <img src={Github} alt="" width="35" />
-          </a>
-          <a href="https://www.linkedin.com/in/langston-beckwith-stanley-831436161/" target="_blank" >
-            <img src={LinkedIn} alt="" width="35"/>
-          </a>
-        </div>
+        <Developer
+          name="Langston Beckwith-Stanley"
+          bio="Bio coming"
+          github="https://github.com/langstonBS"
+          linkedin="https://www.linkedin.com/in/langston-beckwith-stanley-831436161/" />
 
         <div>
           <h3>Hunter Danielson</h3>

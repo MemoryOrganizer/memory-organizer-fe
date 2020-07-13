@@ -3,6 +3,8 @@ import { signup, login } from '../../services/auth';
 import { useHistory, Link } from 'react-router-dom';
 import { useHandleSetUser } from '../hooks/Provider';
 
+// this is made up of two components: a Signup component and a Login component.
+// Separating the logic into two components would simplify this a lot
 export const HomePage = () => {
   const [usernameSignUp, setUsernameSignUp] = useState('');
   const [passwordSignUp, setPasswordSignUp] = useState('');
